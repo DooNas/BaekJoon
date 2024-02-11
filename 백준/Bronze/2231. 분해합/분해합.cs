@@ -1,31 +1,29 @@
-namespace Solution {
-  class Program {
-
-    static int DecompositionSum(int num) {
-      int sum = num;
-      while (true) {
-        if (num == 0) break ;
-
-        sum += num % 10;
-        num /= 10;
-      }
-
-      return sum;
-    }
-
-    static void Main(string[] args) {
-
-      var n = int.Parse(Console.ReadLine()!);
-
-      for (int i = 1; i < n; i++) {
-        if (DecompositionSum(i) == n) {
-          Console.WriteLine(i);
-          return ;
+class Program
+{
+    static void Main()
+    {
+        using (StreamReader reader = new StreamReader(Console.OpenStandardInput()))
+        using (StreamWriter writer = new StreamWriter(Console.OpenStandardOutput()))
+        {
+            string input = reader.ReadLine();
+            int M = int.Parse(input);
+            int N = (M - (9 * input.Length) > 0) ? M - (9 * input.Length) : 0;
+            while (true)
+            {
+                int Sum = N;
+                string s = N.ToString();    //자리값 체크
+                for(int i = 0; i < s.Length; i++)
+                {
+                    Sum += int.Parse(s[i].ToString());
+                }
+                if (Sum == M || N > M)
+                {
+                    if(N > M) N = 0;
+                    break;
+                }
+                N++;
+            }
+            writer.WriteLine(N);
         }
-      }
-
-      Console.WriteLine(0);
-
     }
-  }
 }
