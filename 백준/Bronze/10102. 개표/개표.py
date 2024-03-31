@@ -1,0 +1,7 @@
+count = int(input())
+score = input()
+Acount = score.count('A')
+Bcount = score.count('B')
+if Acount > Bcount : print('A')
+elif Acount == Bcount : print('Tie')
+else : print('B')
